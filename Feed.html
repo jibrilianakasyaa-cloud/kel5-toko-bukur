@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Book Feed | Magenta Dark Mode</title>
+    <style>
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: #141414;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #FF00FF;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #FF00FF;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #FF00FF;
+        }
+
+        /* Main Feed Container */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin-bottom: 30px;
+            border-left: 5px solid #FF00FF;
+            padding-left: 15px;
+        }
+
+        /* CSS Grid untuk Feed Buku */
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        /* Book Card Styling */
+        .book-card {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(255, 0, 255, 0.2);
+            border-color: #FF00FF;
+        }
+
+        .book-cover {
+            height: 350px;
+            background-color: #2a2a2a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #777;
+            font-size: 14px;
+            border-bottom: 2px solid #333;
+            transition: border-color 0.3s ease;
+        }
+
+        .book-card:hover .book-cover {
+            border-color: #FF00FF;
+        }
+
+        .book-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-title {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+
+        .book-author {
+            font-size: 14px;
+            color: #aaaaaa;
+            margin-bottom: 20px;
+        }
+
+        /* Read Button */
+        .read-btn {
+            margin-top: auto;
+            background-color: transparent;
+            color: #FF00FF;
+            border: 1px solid #FF00FF;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .read-btn:hover {
+            background-color: #FF00FF;
+            color: #000000;
+        }
+
+        /* Pagination Styling (Baru ditambahkan) */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+            gap: 8px;
+        }
+
+        .page-link {
+            display: inline-block;
+            padding: 8px 16px;
+            color: #ffffff;
+            text-decoration: none;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background-color: #1a1a1a;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .page-link:hover {
+            border-color: #FF00FF;
+            color: #FF00FF;
+            transform: translateY(-2px);
+        }
+
+        /* Status halaman yang sedang aktif */
+        .page-link.active {
+            background-color: #FF00FF;
+            color: #000000;
+            border-color: #FF00FF;
+        }
+
+        .page-dots {
+            color: #777;
+            padding: 0 10px;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Bukur<span style="color: white;">Ead</span></div>
+        <nav>
+            <ul>
+                <li><a href="#">Beranda</a></li>
+                <li><a href="#">Koleksi</a></li>
+                <li><a href="#">Favorit</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">Baru Ditambahkan</h2>
+
+        <div class="book-grid">
+            <div class="book-card">
+                <div class="book-cover">[Area Cover Buku]</div>
+                <div class="book-info">
+                    <h3 class="book-title">Sistem Tanam Paksa: Sejarah & Dampaknya</h3>
+                    <p class="book-author">Budi Santoso</p>
+                    <a href="#" class="read-btn">Baca Sekarang</a>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-cover">[Area Cover Buku]</div>
+                <div class="book-info">
+                    <h3 class="book-title">Jejak Kuliner Nusantara: Menguak Asal-Usul Dodol</h3>
+                    <p class="book-author">Rina Wijaya</p>
+                    <a href="#" class="read-btn">Baca Sekarang</a>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-cover">[Area Cover Buku]</div>
+                <div class="book-info">
+                    <h3 class="book-title">Struktur Teks Negosiasi yang Efektif</h3>
+                    <p class="book-author">Ahmad Dahlan</p>
+                    <a href="#" class="read-btn">Baca Sekarang</a>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <div class="book-cover">[Area Cover Buku]</div>
+                <div class="book-info">
+                    <h3 class="book-title">Desain UI/UX Fundamental</h3>
+                    <p class="book-author">Sarah Kamilia</p>
+                    <a href="#" class="read-btn">Baca Sekarang</a>
+                </div>
+            </div>
+            
+            <div class="book-card">
+                <div class="book-cover">[Area Cover Buku]</div>
+                <div class="book-info">
+                    <h3 class="book-title">Sastra Klasik Indonesia</h3>
+                    <p class="book-author">Pramoedya A. Toer</p>
+                    <a href="#" class="read-btn">Baca Sekarang</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <a href="#" class="page-link">&laquo; Prev</a>
+            <a href="#" class="page-link active">1</a>
+            <a href="#" class="page-link">2</a>
+            <a href="#" class="page-link">3</a>
+            <span class="page-dots">...</span>
+            <a href="#" class="page-link">10</a>
+            <a href="#" class="page-link">Next &raquo;</a>
+        </div>
+
+    </div>
+
+</body>
+</html>
