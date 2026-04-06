@@ -1,1 +1,132 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BukuReader Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
 
+    .container {
+      width: 350px;
+      background: #2c2c2c;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      background: #555;
+      color: #fff;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .row a {
+      color: #b57cff;
+      text-decoration: none;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 10px;
+      background: linear-gradient(90deg, #b57cff, #8e5cff);
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .alt-login {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #b57cff;
+      cursor: pointer;
+    }
+
+    .signup {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .signup a {
+      color: #b57cff;
+      text-decoration: none;
+    }
+
+    .logo {
+      position: absolute;
+      top: 50px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo">BukuReader</div>
+
+  <div class="container">
+    <h2>Sign in ke akun anda</h2>
+
+    <label>Username atau email</label>
+    <input type="text">
+
+    <label>Password</label>
+    <input type="password">
+
+    <div class="row">
+      <label><input type="checkbox"> Ingat saya</label>
+      <a href="#">Lupa password?</a>
+    </div>
+
+    <button class="btn">Sign in</button>
+
+    <div class="alt-login">Sign in dengan cara lain</div>
+
+    <div class="signup">
+      Pengguna baru? <a href="#">Daftar!</a>
+    </div>
+  </div>
+
+</body>
+</html>
