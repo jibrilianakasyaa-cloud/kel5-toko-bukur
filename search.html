@@ -1,1 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>BukuReader</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f5f5f5;
+      text-align: center;
+      padding: 20px;
+    }
 
+    h1 {
+      color: #333;
+    }
+
+    input, select, button {
+      padding: 10px;
+      margin: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      background: white;
+      width: 180px;
+      margin: 10px;
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: left;
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .btn {
+      width: 100%;
+      margin-top: 5px;
+      border: none;
+      color: white;
+      padding: 8px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .baca { background: #4CAF50; }
+    .download { background: #FF9800; }
+
+    .rating { color: orange; }
+  </style>
+</head>
+<body>
+
+  <h1>📖 BukuReader</h1>
+
+  <input type="text" id="search" placeholder="Cari ebook...">
+
+  <select id="genre">
+    <option value="">Semua Genre</option>
+    <option>Romantis</option>
+    <option>Fantasi</option>
+    <option>Motivasi</option>
+    <option>Drama</option>
+  </select>
+
+  <br>
+  <button onclick="cariBuku()">Cari</button>
+
+  <div class="container" id="hasil"></div>
+
+  <script>
+    let buku = [
+      { judul: "Dilan 1990", genre: "Romantis", rating: 4.5, gambar: "https://via.placeholder.com/150" },
+      { judul: "Bumi", genre: "Fantasi", rating: 4.8, gambar: "https://via.placeholder.com/150" },
+      { judul: "Atomic Habits", genre: "Motivasi", rating: 4.9, gambar: "https://via.placeholder.com/150" },
+      { judul: "Laskar Pelangi", genre: "Drama", rating: 4.7, gambar: "https://via.placeholder.com/150" }
+    ];
+
+    function tampilRating(r) {
+      let b = "";
+      for (let i = 1; i <= 5; i++) {
+        b += i <= Math.round(r) ? "⭐" : "☆";
+      }
+      return b;
+    }
+
+    function bacaBuku(judul) {
+      alert("Membuka ebook: " + judul);
+    }
+
+    function downloadBuku(judul) {
+      alert("Mengunduh ebook: " + judul);
+    }
+
+    function cariBuku() {
+      let keyword = document.getElementById("search").value.toLowerCase();
+      let genre = document.getElementById("genre").value;
+
+      let hasil = buku.filter(item => {
+        return item.judul.toLowerCase().includes(keyword) &&
+        (genre === "" || item.genre === genre);
+      });
+
+      let output = "";
+
+      hasil.forEach(item => {
+        output += `
+          <div class="card">
+            <img src="${item.gambar}">
+            <h4>${item.judul}</h4>
+            <p>${item.genre}</p>
+            <p class="rating">${tampilRating(item.rating)}</p>
+
+            <button class="btn baca" onclick="bacaBuku('${item.judul}')">Baca</button>
+            <button class="btn download" onclick="downloadBuku('${item.judul}')">Download</button>
+          </div>
+        `;
+      });
+
+      document.getElementById("hasil").innerHTML = output;
+    }
+
+    cariBuku();
+  </script>
+
+</body>
+</html>
