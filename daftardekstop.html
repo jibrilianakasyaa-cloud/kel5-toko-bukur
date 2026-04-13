@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BukuReader - Halaman Daftar Buku Desktop</title>
+    <style>
+        /* CSS Reset & Variabel (Sama seperti sebelumnya) */
+        :root {
+            --bg-body: #0a0a0a;
+            --bg-card: #1f1f1f;
+            --primary-accent: #b27bff;
+            --text-main: #f5f5f5;
+            --text-muted: #b0b0b0;
+            --border-color: #333333;
+            --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-stack);
+            line-height: 1.6;
+        }
+
+        /* --- Header Desktop (Sama) --- */
+        .desktop-header {
+            background-color: #141414;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky; top: 0; z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 15px 40px;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center; gap: 40px;
+        }
+
+        .logo-buku-reader {
+            font-size: 26px; font-weight: 800;
+            color: var(--text-main); text-decoration: none;
+            text-transform: uppercase; letter-spacing: -1px;
+        }
+
+        .desktop-nav ul { display: flex; list-style: none; gap: 25px; }
+
+        .desktop-nav a {
+            color: var(--text-muted); text-decoration: none;
+            font-size: 16px; font-weight: 500; transition: color 0.3s;
+        }
+
+        .desktop-nav a:hover, .desktop-nav a.active { color: var(--primary-accent); }
+
+        .action-icons { display: flex; gap: 20px; align-items: center; }
+
+        .search-icon {
+            width: 24px; height: 24px;
+            border: 2px solid var(--text-main); border-radius: 50%;
+            position: relative; cursor: pointer;
+        }
+        .search-icon::after {
+            content: ''; position: absolute;
+            width: 2px; height: 10px;
+            background: var(--text-main); bottom: -6px; right: -4px;
+            transform: rotate(-45deg);
+        }
+
+        .profile-pic {
+            width: 40px; height: 40px;
+            background-color: #666; border-radius: 50%;
+            cursor: pointer; object-fit: cover;
+        }
+
+        /* --- Main Content Desktop (Adaptasi Halaman Beranda/Cari) --- */
+        .main-content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 40px;
+            display: flex; flex-direction: column; gap: 40px;
+        }
+
+        /* --- Perubahan Desktop: Spanduk Utama/Carousel --- */
+        .featured-carousel {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            display: flex; gap: 25px;
+            align-items: center;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+            transition: transform 0.3s;
+        }
+        .featured-carousel:hover { transform: translateY(-5px); }
+
+        .carousel-book-cover {
+            flex: 0 0 220px;
+            aspect-ratio: 2 / 3;
+            border-radius: 8px;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1f1f1f 100%);
+            display: flex; align-items: center; justify-content: center;
+            color: #555; font-size: 20px; font-weight: bold;
+        }
+        .carousel-book-cover::before { content: 'BERUNGGUL'; }
+
+        .carousel-details {
+            flex: 1;
+            display: flex; flex-direction: column; gap: 15px;
+        }
+
+        .carousel-title {
+            font-size: 30px; font-weight: 800;
+            color: var(--text-main); line-height: 1.2;
+        }
+
+        .carousel-summary {
+            color: var(--text-muted); font-size: 16px;
+        }
+
+        .btn-featured {
+            align-self: flex-start;
+            background-color: var(--primary-accent);
+            color: var(--text-main);
+            padding: 10px 25px;
+            border: none; border-radius: 6px;
+            font-size: 16px; font-weight: 700;
+            cursor: pointer; transition: background-color 0.3s;
+        }
+        .btn-featured:hover { background-color: #9c60e3; }
+
+        /* --- Perubahan Desktop: Grid Galeri Buku --- */
+        .book-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .book-card {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            display: flex; flex-direction: column;
+            cursor: pointer; transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .book-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .card-book-cover {
+            width: 100%;
+            aspect-ratio: 2 / 3;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #1f1f1f 0%, #333 100%);
+            display: flex; align-items: center; justify-content: center;
+            color: #555; font-size: 20px; font-weight: bold;
+        }
+        .card-book-cover::before { content: 'COV'; }
+
+        .card-title {
+            font-weight: 700; font-size: 16px;
+            color: var(--text-main); margin-bottom: 5px;
+        }
+
+        .card-author {
+            font-size: 14px; color: var(--text-muted);
+            margin-top: auto;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="desktop-header">
+        <div class="header-container">
+            <a href="#" class="logo-buku-reader">BukuReader</a>
+            
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#" class="active">Beranda</a></li>
+                    <li><a href="#">Feed</a></li>
+                    <li><a href="#">Pencarian</a></li>
+                    <li><a href="#">Karyamu</a></li>
+                    <li><a href="#">Pustaka</a></li>
+                </ul>
+            </nav>
+
+            <div class="action-icons">
+                <div class="search-icon"></div>
+                <img src="#" alt="Profile" class="profile-pic"> </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        
+        <section class="featured-carousel">
+            <div class="carousel-book-cover"></div> <div class="carousel-details">
+                <h2 class="carousel-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h2>
+                <p class="carousel-summary">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque malesuada justo ut turpis mollis, id fermentum neque cursus. Integer rhoncus scelerisque risus.</p>
+                <button class="btn-featured">Lihat Sekarang</button>
+            </div>
+        </section>
+
+        <section class="book-gallery">
+            <div class="book-card">
+                <div class="card-book-cover"></div> <h3 class="card-title">Misteri Kastil Bayangan</h3>
+                <p class="card-author">Karya: A. Setiawan</p>
+            </div>
+            <div class="book-card">
+                <div class="card-book-cover"></div> <h3 class="card-title">Petualangan Sang Penjelajah</h3>
+                <p class="card-author">Karya: B. Putra</p>
+            </div>
+            <div class="book-card">
+                <div class="card-book-cover"></div> <h3 class="card-title">Konspirasi di Bintang Kejora</h3>
+                <p class="card-author">Karya: C. Amelia</p>
+            </div>
+            <div class="book-card">
+                <div class="card-book-cover"></div> <h3 class="card-title">Rahasia Hutan Terlarang</h3>
+                <p class="card-author">Karya: D. Lestari</p>
+            </div>
+            </section>
+
+    </main>
+
+</body>
+</html>

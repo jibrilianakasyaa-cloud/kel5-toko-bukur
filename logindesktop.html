@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BukuReader - Desktop Login Landscape</title>
+    <style>
+        /* Variabel Warna sesuai Desain */
+        :root {
+            --bg-black: #000000;
+            --card-gray: #333333; /* Warna kotak abu-abu gelap */
+            --input-gray: #555555;
+            --primary-purple: #B27BFF;
+            --text-white: #FFFFFF;
+            --text-muted: #AAAAAA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-black);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Logo di luar kotak (paling atas) */
+        .brand-logo {
+            color: var(--text-white);
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Kotak Utama - Dibuat lebih lebar dan lebih pendek (Persegi Panjang) */
+        .login-card {
+            background-color: var(--card-gray);
+            width: 800px; /* Lebar untuk desktop */
+            padding: 40px 60px;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .login-header {
+            color: var(--text-white);
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        /* Form Layout */
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 18px; /* Jarak antar elemen agar tidak tumpuk */
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .input-group label {
+            color: var(--text-white);
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .input-group input {
+            background-color: var(--input-gray);
+            border: none;
+            padding: 12px 16px;
+            border-radius: 8px;
+            color: var(--text-white);
+            font-size: 16px;
+            width: 100%;
+        }
+
+        /* Baris Opsi (Ingat Saya & Lupa Password) */
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .checkbox-area {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-white);
+            font-size: 14px;
+        }
+
+        .forgot-pwd {
+            color: var(--primary-purple);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* Tombol Sign In - Dibuat menonjol */
+        .btn-signin {
+            background-color: var(--primary-purple);
+            color: var(--text-white);
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-signin:hover {
+            background-color: #9c60e3;
+            box-shadow: 0 0 15px rgba(178, 123, 255, 0.4);
+        }
+
+        /* Link Bawah */
+        .other-methods {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .other-methods a {
+            color: var(--primary-purple);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* Teks Daftar di paling bawah (luar kotak) */
+        .signup-footer {
+            margin-top: 25px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        .signup-footer a {
+            color: var(--primary-purple);
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="brand-logo">BukuReader</div>
+
+    <div class="login-card">
+        <h2 class="login-header">Sign in ke akun anda</h2>
+
+        <form class="form-container">
+            <div class="input-group">
+                <label for="email">Username atau email</label>
+                <input type="text" id="email" placeholder="Masukkan username atau email">
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Masukkan password">
+            </div>
+
+            <div class="form-options">
+                <label class="checkbox-area">
+                    <input type="checkbox"> Ingat saya
+                </label>
+                <a href="#" class="forgot-pwd">Lupa password?</a>
+            </div>
+
+            <button type="submit" class="btn-signin">Sign in</button>
+
+            <div class="other-methods">
+                <a href="#">Sign in dengan cara lain</a>
+            </div>
+        </form>
+    </div>
+
+    <div class="signup-footer">
+        Pengguna baru? <a href="#">Daftar!</a>
+    </div>
+
+</body>
+</html>
+
