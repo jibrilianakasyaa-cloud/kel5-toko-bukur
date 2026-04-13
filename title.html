@@ -1,1 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BukuReader</title>
 
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+.header h2 {
+    margin: 0;
+}
+
+.icons {
+    display: flex;
+    gap: 15px;
+}
+
+.circle {
+    width: 35px;
+    height: 35px;
+    background: #555;
+    border-radius: 50%;
+}
+
+/* MAIN */
+.container {
+    padding: 15px;
+}
+
+/* TOP SECTION */
+.top {
+    display: flex;
+    gap: 15px;
+}
+
+.cover {
+    width: 120px;
+    height: 160px;
+    background: #444;
+    border-radius: 5px;
+}
+
+.info h3 {
+    margin: 0;
+}
+
+.info p {
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* GENRE */
+.genre {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #aaa;
+}
+
+/* BUTTONS */
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn {
+    height: 40px;
+    border-radius: 5px;
+}
+
+.btn-purple {
+    width: 60px;
+    background: #9b5de5;
+}
+
+.btn-dark {
+    flex: 1;
+    background: #333;
+}
+
+/* SINOPSIS */
+.section {
+    margin-top: 20px;
+}
+
+.section h4 {
+    margin-bottom: 5px;
+}
+
+.section p {
+    color: #bbb;
+    font-size: 14px;
+}
+
+/* LIST */
+.list-box {
+    height: 120px;
+    background: #333;
+    border-radius: 8px;
+}
+
+/* NAVBAR */
+.navbar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #000;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-top: 1px solid #222;
+}
+
+.navbar span {
+    font-size: 12px;
+    color: #ccc;
+}
+</style>
+
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <h2>BukuReader</h2>
+    <div class="icons">
+        🔍
+        <div class="circle"></div>
+    </div>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+    <div class="top">
+        <div class="cover"></div>
+
+        <div class="info">
+            <h3>Lorem ipsum dolor sit amet</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Pellentesque malesuada justo ut turpis mollis.
+            </p>
+        </div>
+    </div>
+
+    <div class="genre">
+        Genre &nbsp; Genre &nbsp; Genre &nbsp; Genre &nbsp; Genre
+    </div>
+
+    <div class="buttons">
+        <div class="btn btn-purple"></div>
+        <div class="btn btn-dark"></div>
+        <div class="btn btn-dark"></div>
+    </div>
+
+    <div class="section">
+        <h4>Sinopsis</h4>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Pellentesque malesuada justo ut turpis mollis.
+        </p>
+    </div>
+
+    <div class="section">
+        <h4>Daftar volume/chapter/edisi</h4>
+        <div class="list-box"></div>
+    </div>
+
+</div>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <span>Beranda</span>
+    <span>Feed</span>
+    <span>Pencarian</span>
+    <span>Karyamu</span>
+    <span>Pustaka</span>
+</div>
+
+</body>
+</html>
