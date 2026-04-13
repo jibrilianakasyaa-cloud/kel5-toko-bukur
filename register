@@ -1,1 +1,45 @@
+<script>
+function togglePass() {
+    let pass = document.getElementById("password");
+    pass.type = pass.type === "password" ? "text" : "password";
+}
 
+function register() {
+    let username = document.getElementById("username").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let msg = document.getElementById("msg");
+
+    if (!username || !email || !password) {
+        msg.innerText = "⚠️ Semua field wajib diisi!";
+        msg.style.color = "red";
+        return;
+    }
+
+    if (password.length < 6) {
+        msg.innerText = "⚠️ Password minimal 6 karakter!";
+        msg.style.color = "red";
+        return;
+    }
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+
+    let exist = users.find(u => u.email === email);
+    if (exist) {
+        msg.innerText = "⚠️ Email sudah digunakan!";
+        msg.style.color = "red";
+        return;
+    }
+
+    users.push({ username, email, password });
+    localStorage.setItem("users", JSON.stringify(users));
+
+    msg.innerText = "✅ Registrasi berhasil!";
+    msg.style.color = "green";
+
+    // reset form
+    document.getElementById("username").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("password").value = "";
+}
+</script>
