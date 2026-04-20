@@ -1,61 +1,249 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>BukuReader</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+            background-color: #000000;
+        }
+        body {
+            margin: 0;
+            padding: 20px;
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+            padding: 0 10px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .icon-search {
+            width: 20px;
+            height: 20px;
+            border: 2px solid white;
+            border-radius: 50%;
+            position: relative;
+        }
+        .icon-search::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 2px;
+            background: white;
+            bottom: -4px;
+            right: -4px;
+            transform: rotate(45deg);
+        }
+        .profile-circle {
+            width: 35px;
+            height: 35px;
+            background-color: #666;
+            border-radius: 50%;
+        }
+        .hero-banner {
+            width: 100%;
+            height: 200px;
+            background-color: #333;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        .hero-dots {
+            display: flex;
+            justify-content: center;
+            gap: 120px;
+            margin: 15px 0;
+        }
+        .dot {
+            width: 25px;
+            height: 25px;
+            background-color: #666;
+            border-radius: 50%;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .view-all-btn {
+            background-color: transparent;
+            color: #aaa;
+            border: 1px solid #444;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            cursor: pointer;
+        }
+        /* Vertical List Section */
+        .book-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .book-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .book-cover-small {
+            width: 55px;
+            height: 80px;
+            background-color: #444;
+            border-radius: 4px;
+        }
+        .book-info-placeholder {
+            height: 12px;
+            background-color: #222;
+            border-radius: 2px;
+        }
+        /* SCROLLABLE CAROUSEL SECTION */
+        .carousel-wrapper {
+            margin-top: 30px;
+            width: 100%;
+        }
+        .carousel-container {
+            display: flex;
+            overflow-x: auto; /* Enable horizontal scrolling */
+            gap: 15px;
+            padding-bottom: 10px;
+            scrollbar-width: none; /* Hide scrollbar for Firefox */
+            -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+        }
+        .carousel-container::-webkit-scrollbar {
+            display: none; /* Hide scrollbar for Chrome/Safari */
+        }
+        .carousel-card {
+            width: 110px;
+            flex-shrink: 0;
+        }
+        .book-cover-large {
+            width: 110px;
+            height: 165px;
+            background-color: #333;
+            border-radius: 6px;
+            margin-bottom: 6px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .book-title {
+            font-size: 11px;
+            line-height: 1.2;
+            color: #ddd;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        /* Bottom Navigation */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 55px;
+            background-color: #000;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border-top: 1px solid #222;
+            z-index: 100;
+        }
+        .nav-item {
+            font-size: 11px;
+            color: #888;
+        }
+        .nav-item.active {
+            color: #fff;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-
-  <!-- Header -->
-  <div class="header">
-    <h1>BukuReader</h1>
-    <div class="header-icons">
-      <span class="icon">🔍</span>
-      <a href="login.html">
-      <div class="profile"></div>
-      </a>
-    </div>
-  </div>
-
-  <!-- Content -->
-  <div class="container">
-
-    <div class="card large"></div>
-
-    <div class="avatars">
-      <div class="avatar"></div>
-      <div class="avatar"></div>
+    <div class="header">
+        <div class="logo">BukuReader</div>
+        <div class="header-icons">
+            <div class="icon-search"></div>
+            <div class="profile-circle"></div>
+        </div>
     </div>
 
-    <h2>Lorem Ipsum</h2>
-    <!-- First Card (Horizontal Scroll Section) -->
-<div class="section">
-  <div class="section-header">
-    <h2>Featured</h2>
-    <button onclick="goToPage()">See All</button>
-  </div>
+    <div class="hero-banner"></div>
+    <div class="hero-dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
 
-  <div class="scroll-container">
-    <div class="scroll-card"></div>
-    <div class="scroll-card"></div>
-    <div class="scroll-card"></div>
-    <div class="scroll-card"></div>
-  </div>
-</div>
-    <div class="card"></div>
+    <div class="section-header">
+        <div class="section-title">Lorem Ipsum</div>
+        <button class="view-all-btn">Lihat Semua</button>
+    </div>
 
-  </div>
+    <div class="book-list">
+        <div class="book-row"><div class="book-cover-small"></div><div class="book-info-placeholder" style="width: 60%"></div></div>
+        <div class="book-row"><div class="book-cover-small"></div><div class="book-info-placeholder" style="width: 45%"></div></div>
+        <div class="book-row"><div class="book-cover-small"></div><div class="book-info-placeholder" style="width: 75%"></div></div>
+        <div class="book-row"><div class="book-cover-small"></div><div class="book-info-placeholder" style="width: 50%"></div></div>
+        <div class="book-row"><div class="book-cover-small"></div><div class="book-info-placeholder" style="width: 40%"></div></div>
+    </div>
 
-  <!-- Bottom Navigation -->
-  <div class="bottom-nav">
-    <a href="index.html"><div class="nav-item active">Beranda</div></a>
-    <a href="feed.html"><div class="nav-item">Feed</div></a>
-    <a href="search.html"><div class="nav-item">Search</div></a>
-    <a href="create.html"><div class="nav-item">Karyamu</div></a>
-    <a href="library.html"><div class="nav-item">Library</div></a>
-  </div>
+    <div class="carousel-wrapper">
+        <div class="section-header">
+            <div class="section-title">Rekomendasi Terpopuler</div>
+        </div>
+        <div class="carousel-container">
+            <!-- 15 Cards Generated -->
+            <div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Buku Terpopuler 1</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Buku Terpopuler 2</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Buku Terpopuler 3</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Buku Terpopuler 4</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Buku Terpopuler 5</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Buku Terpopuler 6</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Buku Terpopuler 7</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Buku Terpopuler 8</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Buku Terpopuler 9</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Buku Terpopuler 10</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Buku Terpopuler 11</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Buku Terpopuler 12</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Buku Terpopuler 13</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Buku Terpopuler 14</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Buku Terpopuler 15</div></div>
+        </div>
 
-  <script src="js/script.js"></script>
+        <div class="section-header">
+            <div class="section-title">Baru Dirilis</div>
+        </div>
+        <div class="carousel-container">
+             <div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Rilis Terbaru 1</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Rilis Terbaru 2</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Rilis Terbaru 3</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Rilis Terbaru 4</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Rilis Terbaru 5</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Rilis Terbaru 6</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Rilis Terbaru 7</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Rilis Terbaru 8</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Rilis Terbaru 9</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Rilis Terbaru 10</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Rilis Terbaru 11</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Rilis Terbaru 12</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Rilis Terbaru 13</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Rilis Terbaru 14</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Rilis Terbaru 15</div></div>
+        </div>
+
+        <div class="section-header">
+            <div class="section-title">Pilihan Editor</div>
+        </div>
+        <div class="carousel-container">
+             <div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Pilihan Editor 1</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Pilihan Editor 2</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Pilihan Editor 3</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Pilihan Editor 4</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Pilihan Editor 5</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Pilihan Editor 6</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Pilihan Editor 7</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Pilihan Editor 8</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Pilihan Editor 9</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Pilihan Editor 10</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Pilihan Editor 11</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Pilihan Editor 12</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Pilihan Editor 13</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Pilihan Editor 14</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Pilihan Editor 15</div></div>
+        </div>
+
+        <div class="section-header">
+            <div class="section-title">Sering Dibaca</div>
+        </div>
+        <div class="carousel-container">
+             <div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Sering Dibaca 1</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Sering Dibaca 2</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Sering Dibaca 3</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Sering Dibaca 4</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Sering Dibaca 5</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Sering Dibaca 6</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Sering Dibaca 7</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Sering Dibaca 8</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Sering Dibaca 9</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Sering Dibaca 10</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Sering Dibaca 11</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Sering Dibaca 12</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Sering Dibaca 13</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Sering Dibaca 14</div></div><div class="carousel-card"><div class="book-cover-large"></div><div class="book-title">Sering Dibaca 15</div></div>
+        </div>
+    </div>
+
+    <div style="height: 70px;"></div>
+
+    <div class="bottom-nav">
+        <div class="nav-item active">Beranda</div>
+        <div class="nav-item">Feed</div>
+        <div class="nav-item">Pencarian</div>
+        <div class="nav-item">Karyamu</div>
+        <div class="nav-item">Pustaka</div>
+    </div>
 </body>
 </html>
